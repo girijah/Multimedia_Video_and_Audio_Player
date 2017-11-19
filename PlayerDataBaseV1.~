@@ -1,0 +1,172 @@
+CREATE TABLE USER_MEMBER(
+UserID NUMBER (10),
+UserName VARCHAR (24) NOT NULL ,
+Password VARCHAR (20) NOT NULL ,
+CONSTRAINT UserID_pk  PRIMARY KEY (UserID)
+);
+
+CREATE SEQUENCE seq_UserID
+MINVALUE  1
+INCREMENT BY 1
+CACHE 10;
+
+INSERT INTO USER_MEMBER (UserID ,UserName, Password )VALUES (seq_UserID.NEXTVAL, 'peter', 'peter');
+INSERT INTO USER_MEMBER (UserID ,UserName, Password )VALUES (seq_UserID.NEXTVAL, 'Shreya', 'Shreya');
+
+
+
+SELECT * FROM  USER_MEMBER;
+
+
+
+
+CREATE TABLE PLAY_LIST(
+PlayListID NUMBER (10),
+UserID NUMBER (10),
+ListName VARCHAR (40),
+CONSTRAINT PlayList_pk PRIMARY KEY (PlayListID),
+CONSTRAINT  UserID_fk FOREIGN KEY (UserID)REFERENCES  USER_MEMBER(UserID)
+);
+
+CREATE SEQUENCE seq_PlayList
+MINVALUE 1
+INCREMENT BY 1
+CACHE 10;
+
+INSERT INTO PLAY_LIST(PlayListID,UserID,ListName) VALUES (seq_PlayList.NEXTVAL , 1, 'MelodyCollection');
+ INSERT INTO PLAY_LIST(PlayListID,UserID,ListName) VALUES (seq_PlayList.NEXTVAL , 11, 'KarnaticBase');
+ INSERT INTO PLAY_LIST(PlayListID,UserID,ListName) VALUES (seq_PlayList.NEXTVAL , 1, 'Fusion');
+   INSERT INTO PLAY_LIST(PlayListID,UserID,ListName) VALUES (seq_PlayList.NEXTVAL , 1, 'HipHop');
+    INSERT INTO PLAY_LIST(PlayListID,UserID,ListName) VALUES (seq_PlayList.NEXTVAL , 1, 'Rock');
+     INSERT INTO PLAY_LIST(PlayListID,UserID,ListName) VALUES (seq_PlayList.NEXTVAL , 1, 'FreeStyle');
+      INSERT INTO PLAY_LIST(PlayListID,UserID,ListName) VALUES (seq_PlayList.NEXTVAL , 11, 'Dance');
+
+
+
+
+
+
+
+SELECT * FROM PLAY_LIST;
+
+
+
+
+
+CREATE TABLE SONG (
+SongID NUMBER (10),
+"Song Title" VARCHAR (40),
+Artist VARCHAR (34),
+Album VARCHAR (34),
+Composer VARCHAR (34),
+Genre VARCHAR (30),
+"Year" NUMBER (6),
+"Item Type" VARCHAR (39),
+"File Path" VARCHAR (60),
+"Size" VARCHAR (20),
+"Length" VARCHAR(20),
+"Audio/Video" VARCHAR (10),
+CONSTRAINT SongID_pk PRIMARY KEY (SongID)
+);
+
+
+CREATE SEQUENCE seq_SongID
+MINVALUE 1
+INCREMENT BY 1
+CACHE 10;
+
+ INSERT INTO SONG (SongID,"Song Title",Artist, Album,Composer, Genre,"Year","Item Type" , "File Path", "Size","Length", "Audio/Video") VALUES (seq_SongID.NEXTVAL , 'Pani da','Jonita Gandhi', 'Vicky Donor', 'Aakash Gandhi', 'Melody classic',2012, 'VLC Media','','28.7 MB','00:06:49', 'Video');
+  INSERT INTO SONG (SongID,"Song Title",Artist, Album,Composer, Genre,"Year","Item Type" , "File Path", "Size","Length", "Audio/Video") VALUES (seq_SongID.NEXTVAL , 'OorellaamUnnai.mp4','BombayJayaShreeUnnikrishnan', 'Nanbenda', 'HarrisJeyaraj', 'Classic',2014, 'VLC Media','','20 MB','00:04:33', 'Video');
+
+ INSERT INTO SONG (SongID,"Song Title",Artist, Album,Composer, Genre,"Year","Item Type" , "File Path", "Size","Length", "Audio/Video") VALUES (seq_SongID.NEXTVAL , 'Iyenkara Veetu.MP3','HariharanHarini', 'Anniyan', 'HarrisJayaraj', 'Soundtrack',2005, 'MPEG Layer 3 Audio File (.MP3)','','5.70 MB','00:06:10', 'Audio');
+SELECT artist,album,composer,genre, "Year","Size","Length" FROM SONG WHERE "Song Title" = 'Santhikkatha.mp4';
+
+  INSERT INTO SONG (SongID,"Song Title",Artist, Album,Composer, Genre,"Year","Item Type" , "File Path", "Size","Length", "Audio/Video") VALUES (seq_SongID.NEXTVAL , 'HipHop.mp4','', '', '', 'HipHop','', 'VLC Media','','10.3 MB','00:03:21', 'Video');
+
+ INSERT INTO SONG (SongID,"Song Title",Artist, Album,Composer, Genre,"Year","Item Type" , "File Path", "Size","Length", "Audio/Video") VALUES (seq_SongID.NEXTVAL , 'HipHopCompetition.flv','', '', '', 'HipHop','', 'Windows Media Player','','5.89 MB','00:01:46', 'Video');
+
+ INSERT INTO SONG (SongID,"Song Title",Artist, Album,Composer, Genre,"Year","Item Type" , "File Path", "Size","Length", "Audio/Video") VALUES (seq_SongID.NEXTVAL , 'LiquidDance.mp3','', '', '', 'Fusion','', 'MPEG Layer 3 Audio File (.MP3)','','28.7 MB','00:02:58', 'Audio');
+
+ INSERT INTO SONG (SongID,"Song Title",Artist, Album,Composer, Genre,"Year","Item Type" , "File Path", "Size","Length", "Audio/Video") VALUES (seq_SongID.NEXTVAL , 'TurnMeOn.mp3','David Guetta', 'Nothing but the beat', 'David Guetta', 'Jazz,Pop',2011, 'MPEG Layer 3 Audio File (.MP3)','','28.7 MB','00:03:19', 'Audio');
+  INSERT INTO SONG (SongID,"Song Title",Artist, Album,Composer, Genre,"Year","Item Type" , "File Path", "Size","Length", "Audio/Video") VALUES (seq_SongID.NEXTVAL , 'AgasamBadilena.mp4','Sagar,Megha', 'Mr.Perfect', 'DSP', 'Classic','2011', 'VLC Media','','43 MB','00:04:06', 'Video');
+   INSERT INTO SONG (SongID,"Song Title",Artist, Album,Composer, Genre,"Year","Item Type" , "File Path", "Size","Length", "Audio/Video") VALUES (seq_SongID.NEXTVAL , 'Chella.mp4','HarishRaga,MalaVasdevn,SujthaMohan', 'Poovellam Un Vaasam', 'Vidyasagar', 'Classic','2001', 'VLC Media','','24.9 MB','00:04:46', 'Video');
+
+
+ INSERT INTO SONG (SongID,"Song Title",Artist, Album,Composer, Genre,"Year","Item Type" , "File Path", "Size","Length", "Audio/Video") VALUES (seq_SongID.NEXTVAL , 'IsaiVeesi.mp4','Chinmayi', 'Isai', 'SJ Suryah', 'Classic','2014', 'VLC Media','','15.9 MB','00:03:16', 'Video');
+
+ INSERT INTO SONG (SongID,"Song Title",Artist, Album,Composer, Genre,"Year","Item Type" , "File Path", "Size","Length", "Audio/Video") VALUES (seq_SongID.NEXTVAL , 'Majnu.mp4','HarishRaghavendra,BombayJayashri', 'Majnu', 'Harris Jayaraj', 'Classic','2007', 'VLC Media','','13.4 MB','00:05:19', 'Video');
+
+ INSERT INTO SONG (SongID,"Song Title",Artist, Album,Composer, Genre,"Year","Item Type" , "File Path", "Size","Length", "Audio/Video") VALUES (seq_SongID.NEXTVAL , 'Manohari.mp4','MohanaBogaraju,Revanth', 'Baahubali', 'MM Keeravani', 'Classic','2015', 'VLC Media','','50.6 MB','00:02:14', 'Video');
+   INSERT INTO SONG (SongID,"Song Title",Artist, Album,Composer, Genre,"Year","Item Type" , "File Path", "Size","Length", "Audio/Video") VALUES (seq_SongID.NEXTVAL , ' Santhikkatha.mp4','Chitra,Sowmiya,UnniMenon', '180', 'Shareth', 'Classic','2011', 'VLC Media','','95.9 MB','00:02:59', 'Video');
+     INSERT INTO SONG (SongID,"Song Title",Artist, Album,Composer, Genre,"Year","Item Type" , "File Path", "Size","Length", "Audio/Video") VALUES (seq_SongID.NEXTVAL , ' SevanamSelaikati.mp3','JassieGift', 'Mozhi', 'Vidyasagar', 'Classic','2007', 'VLC Media','','5.52 MB','00:04:44', 'Video');
+
+ INSERT INTO SONG (SongID,"Song Title",Artist, Album,Composer, Genre,"Year","Item Type" , "File Path", "Size","Length", "Audio/Video") VALUES (seq_SongID.NEXTVAL , 'Mazhakaatha.mp4','Haricharan,Vandana', 'Oru Oorla Rendu Raja', 'D Imman', 'Classic','2014', 'VLC Media','','19.7 MB','00:04:01', 'Video');
+
+ INSERT INTO SONG (SongID,"Song Title",Artist, Album,Composer, Genre,"Year","Item Type" , "File Path", "Size","Length", "Audio/Video") VALUES (seq_SongID.NEXTVAL , 'MargazhiPoove.mp4','Subha', 'May Maadham', 'AR Rahman', 'Classic','1994', 'VLC Media','','11.5 MB','00:06:06', 'Video');
+
+  INSERT INTO SONG (SongID,"Song Title",Artist, Album,Composer, Genre,"Year","Item Type" , "File Path", "Size","Length", "Audio/Video") VALUES (seq_SongID.NEXTVAL , 'Manpreet2011.mp4','', '', '', 'Dance','2011', 'VLC Media','','23.7 MB','00:04:50', 'Video');
+ INSERT INTO SONG (SongID,"Song Title",Artist, Album,Composer, Genre,"Year","Item Type" , "File Path", "Size","Length", "Audio/Video") VALUES (seq_SongID.NEXTVAL , 'Manpreet2012.mp4','', '', '', 'Dance','2012', 'VLC Media','','23.3 MB','00:04:36', 'Video');
+ INSERT INTO SONG (SongID,"Song Title",Artist, Album,Composer, Genre,"Year","Item Type" , "File Path", "Size","Length", "Audio/Video") VALUES (seq_SongID.NEXTVAL , 'Manpreet2014.mp4','', '', '', 'Dance','2014', 'VLC Media','','28.1 MB','00:05:33', 'Video');
+   INSERT INTO SONG (SongID,"Song Title",Artist, Album,Composer, Genre,"Year","Item Type" , "File Path", "Size","Length", "Audio/Video") VALUES (seq_SongID.NEXTVAL , 'Lagaan.mp4','UditNarayan,AshaBhonsale', 'Lagaan', 'AR Rehman', 'Indie','2001', 'VLC Media','','25.1 MB','00:05:07', 'Video');
+
+
+
+
+
+ UPDATE SONG
+ SET  Composer = 'HarrisJeyaraj'
+ WHERE SongID = 11;
+
+ UPDATE SONG
+ SET  "Song Title" = 'SevanamSelaikati.mp3'
+ WHERE SongID = 26;
+
+ SELECT "Song Title" FROM SONG WHERE SongID = 25;
+
+
+ SELECT * FROM SONG;
+
+
+
+
+
+CREATE TABLE SONGPLAY_LIST (
+SongID NUMBER (10),
+PlayListID NUMBER (10),
+CONSTRAINT SongID_fk FOREIGN KEY (SongID) REFERENCES SONG (SongID),
+CONSTRAINT PlayListID_fk FOREIGN KEY (PlayListID) REFERENCES PLAY_LIST (PlayListID)
+);
+
+INSERT INTO SONGPLAY_LIST(SongID,PlayListID ) VALUES (1,1);
+INSERT INTO SONGPLAY_LIST(SongID,PlayListID ) VALUES (11,11);
+
+INSERT INTO SONGPLAY_LIST(SongID,PlayListID ) VALUES (12,11);
+INSERT INTO SONGPLAY_LIST(SongID,PlayListID ) VALUES (13,13);
+
+INSERT INTO SONGPLAY_LIST(SongID,PlayListID ) VALUES (14,13);
+INSERT INTO SONGPLAY_LIST(SongID,PlayListID ) VALUES (15,12);
+INSERT INTO SONGPLAY_LIST(SongID,PlayListID ) VALUES (16,14);
+  INSERT INTO SONGPLAY_LIST(SongID,PlayListID ) VALUES (17,15);
+  INSERT INTO SONGPLAY_LIST(SongID,PlayListID ) VALUES (20,15);
+ INSERT INTO SONGPLAY_LIST(SongID,PlayListID ) VALUES (21,15);
+ INSERT INTO SONGPLAY_LIST(SongID,PlayListID ) VALUES (22,15);
+ INSERT INTO SONGPLAY_LIST(SongID,PlayListID ) VALUES (23,15);
+ INSERT INTO SONGPLAY_LIST(SongID,PlayListID ) VALUES (24,15);
+ INSERT INTO SONGPLAY_LIST(SongID,PlayListID ) VALUES (25,15);
+ INSERT INTO SONGPLAY_LIST(SongID,PlayListID ) VALUES (26,15);
+  INSERT INTO SONGPLAY_LIST(SongID,PlayListID ) VALUES (27,15);
+   INSERT INTO SONGPLAY_LIST(SongID,PlayListID ) VALUES (29,16);
+ INSERT INTO SONGPLAY_LIST(SongID,PlayListID ) VALUES (30,16);
+ INSERT INTO SONGPLAY_LIST(SongID,PlayListID ) VALUES (31,16);
+
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM  SONGPLAY_LIST;
